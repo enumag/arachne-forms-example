@@ -1,0 +1,16 @@
+# disable directory listing
+Options -Indexes
+Options -MultiViews
+Options +FollowSymlinks
+DirectorySlash Off
+
+# enable cool URL
+RewriteEngine On
+RewriteBase /
+
+# prevents files starting with dot to be viewed by browser
+RewriteRule /\.|^\. - [F]
+
+# front controller
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . index.php [L]

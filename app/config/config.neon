@@ -1,0 +1,59 @@
+extensions:
+	php: Nette\DI\Extensions\PhpExtension
+
+	arachne.dihelpers.iteratorresolvers: Arachne\DIHelpers\DI\IteratorResolversExtension
+	arachne.dihelpers.iterators: Arachne\DIHelpers\DI\IteratorsExtension
+	arachne.dihelpers.resolvers: Arachne\DIHelpers\DI\ResolversExtension
+
+	nette.application: Nette\Bridges\ApplicationDI\ApplicationExtension( %debugMode%, [ %appDir% ], %tempDir% )
+	nette.cache: Nette\Bridges\CacheDI\CacheExtension( %tempDir% )
+	nette.http: Nette\Bridges\HttpDI\HttpExtension
+	nette.inject: Nette\DI\Extensions\InjectExtension
+	nette.routing: Nette\Bridges\ApplicationDI\RoutingExtension( %debugMode% )
+	nette.session: Nette\Bridges\HttpDI\SessionExtension( %debugMode% )
+	latte: Nette\Bridges\ApplicationDI\LatteExtension( '%tempDir%/cache/latte', %debugMode% )
+	tracy: Tracy\Bridges\Nette\TracyExtension( %debugMode% )
+
+	kdyby.translation: Kdyby\Translation\DI\TranslationExtension
+	kdyby.validator: Kdyby\Validator\DI\ValidatorExtension
+	kdyby.annotations: Kdyby\Annotations\DI\AnnotationsExtension
+
+	arachne.csrf: Arachne\Csrf\DI\CsrfExtension
+	arachne.twig: Arachne\Twig\DI\TwigExtension( %debugMode% )
+	arachne.forms: Arachne\Forms\DI\FormsExtension
+	arachne.propertyaccess: Arachne\PropertyAccess\DI\PropertyAccessExtension
+
+services:
+	nette.routing.router: App\Router\RouterFactory::createRouter
+
+php:
+	date.timezone: Europe/Prague
+
+arachne.twig:
+	options:
+		cache: %tempDir%/cache/twig
+	paths:
+		- %appDir%/templates/forms
+
+arachne.forms:
+	defaultThemes:
+		- bootstrap.twig
+	csrfTranslationDomain: Forms
+
+kdyby.validator:
+	translationDomain: validators
+
+nette.application:
+	errorPresenter: Error
+	catchExceptions: true
+	mapping:
+		*: App\*Module\Presenter\*Presenter
+
+latte:
+	xhtml: false
+
+kdyby.translation:
+	default: cs
+	fallback: [ cs ]
+	whitelist: [ cs ]
+	dirs: [ %appDir%/locales ]
