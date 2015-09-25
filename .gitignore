@@ -1,0 +1,10 @@
+/log/*
+/bower_components
+/node_modules
+/temp/*
+/vendor
+/app/config/**/local.neon
+
+!.gitkeep
+!.gitignore
+!.htaccess
