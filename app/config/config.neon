@@ -25,6 +25,11 @@ extensions:
 
 services:
 	nette.routing.router: App\Router\RouterFactory::createRouter
+	- App\FrontModule\Component\ExampleFormFactory
+	-
+		class: App\FrontModule\Form\Example
+		tags:
+			arachne.forms.type: app_example
 
 php:
 	date.timezone: Europe/Prague
@@ -45,7 +50,7 @@ kdyby.validator:
 
 nette.application:
 	errorPresenter: Error
-	catchExceptions: true
+	catchExceptions: false
 	mapping:
 		*: App\*Module\Presenter\*Presenter
 

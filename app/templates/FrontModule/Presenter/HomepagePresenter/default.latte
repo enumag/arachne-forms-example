@@ -1,1 +1,18 @@
-It works!
+{layout ../@layout.latte}
+
+{block styles}
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="/resources/forms.css">
+{/block}
+
+{block scripts}
+<script src="//code.jquery.com/jquery-2.1.4.js"></script>
+<script src="/resources/validation.js"></script>
+<script src="/resources/application.js"></script>
+{/block}
+
+{block content}
+	<div class="container">
+		{control form-form}
+	</div>
+{/block}
