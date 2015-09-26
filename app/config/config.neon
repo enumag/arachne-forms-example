@@ -25,11 +25,12 @@ extensions:
 
 services:
 	nette.routing.router: App\Router\RouterFactory::createRouter
-	- App\FrontModule\Component\ExampleFormFactory
+	- App\FrontModule\Component\CustomFormFactory
+	- App\FrontModule\Component\EntityFormFactory
 	-
-		class: App\FrontModule\Form\Example
+		class: App\FrontModule\Form\Registration
 		tags:
-			arachne.forms.type: app_example
+			arachne.forms.type: app_registration
 
 php:
 	date.timezone: Europe/Prague

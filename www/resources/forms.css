@@ -1,0 +1,96 @@
+body > .container {
+	margin-top: 40px;
+}
+
+.form-control {
+	box-shadow: none;
+	border-color: #d2d6de;
+}
+.form-group.has-success label,
+.form-group.has-success .error-message {
+	color: #00a65a;
+}
+.form-group.has-success .form-control {
+	border-color: #00a65a;
+	box-shadow: none;
+}
+.form-group.has-warning label,
+.form-group.has-warning .error-message {
+	color: #f39c12;
+}
+.form-group.has-warning .form-control {
+	border-color: #f39c12;
+	box-shadow: none;
+}
+.form-group.has-error label,
+.form-group.has-error .error-message {
+	color: #dd4b39;
+}
+.form-group.has-error .form-control {
+	border-color: #dd4b39;
+	box-shadow: none;
+}
+.form-control:focus {
+	border-color: #3c8dbc;
+	box-shadow: none;
+}
+
+.form-group .error-message {
+	display: block;
+	padding: 5px 0 0 3px;
+}
+
+.form-group .error-message:before {
+	content: '\f071';
+	display: inline-block;
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	margin-right: 5px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.form-group.has-warning .error-message:before {
+	content: '\f021';
+}
+
+.form-group .checkbox label,
+.form-group .radio label {
+	padding-left: 0;
+}
+
+.form-group .checkbox div,
+.form-group .radio div {
+	margin-right: 10px;
+}
+
+label.required:after {
+	content: ' *';
+	color: red;
+}
+
+.input-group-addon {
+	display: table-cell;
+}
+
+@media (min-width: 1200px) {
+	.form-group .input-group,
+	.form-group .form-control {
+		width: 66.67%;
+		float: left;
+	}
+	.form-group .input-group > .form-control {
+		width: 100%;
+	}
+	.form-group .form-inline .form-control {
+		width: auto;
+		float: none;
+	}
+	.form-group .error-message {
+		width: 33.33%;
+		float: left;
+		padding: 7px 0 0 10px;
+	}
+}

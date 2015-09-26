@@ -2,12 +2,12 @@
 
 namespace App\FrontModule\Component;
 
-interface ExampleFormFactory
+interface CustomFormFactory
 {
 
 	/**
-	 * @return ExampleForm
-	 */	 	
+	 * @return CustomForm
+	 */
 	public function create($data = null);
 
 }

@@ -2,15 +2,14 @@
 
 namespace App\FrontModule\Presenter;
 
-use App\FrontModule\Component\ExampleFormFactory;
+use App\FrontModule\Component\EntityFormFactory;
 
 class HomepagePresenter extends BasePresenter
 {
 
-	public function createComponentForm(ExampleFormFactory $factory)
+	public function createComponentForm(EntityFormFactory $factory)
 	{
-		$data = null; // Or an instance of App\FrontModule\Entity\Example
-		return $factory->create($data);
+		return $factory->create('app_registration', [], null);
 	}
 
 }
