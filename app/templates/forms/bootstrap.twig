@@ -102,36 +102,56 @@ col-sm-9 col-lg-10
 {%- endblock email_widget %}
 
 {% block country_widget -%}
-	<div class="input-group">
-		<span class="input-group-addon fa fa-globe"></span>
+	{%- if not expanded -%}
+		<div class="input-group">
+			<span class="input-group-addon fa fa-globe"></span>
+			{{ block('choice_widget') }}
+		</div>
+	{%- else -%}
 		{{ block('choice_widget') }}
-	</div>
+	{%- endif -%}
 {%- endblock country_widget %}
 
 {% block language_widget -%}
-	<div class="input-group">
-		<span class="input-group-addon fa fa-language"></span>
+	{%- if not expanded -%}
+		<div class="input-group">
+			<span class="input-group-addon fa fa-language"></span>
+			{{ block('choice_widget') }}
+		</div>
+	{%- else -%}
 		{{ block('choice_widget') }}
-	</div>
+	{%- endif -%}
 {%- endblock language_widget %}
 
 {% block locale_widget -%}
-	<div class="input-group">
-		<span class="input-group-addon fa fa-map-marker"></span>
+	{%- if not expanded -%}
+		<div class="input-group">
+			<span class="input-group-addon fa fa-map-marker"></span>
+			{{ block('choice_widget') }}
+		</div>
+	{%- else -%}
 		{{ block('choice_widget') }}
-	</div>
+	{%- endif -%}
 {%- endblock locale_widget %}
 
 {% block timezone_widget -%}
-	<div class="input-group">
-		<span class="input-group-addon fa fa-clock-o"></span>
+	{%- if not expanded -%}
+		<div class="input-group">
+			<span class="input-group-addon fa fa-clock-o"></span>
+			{{ block('choice_widget') }}
+		</div>
+	{%- else -%}
 		{{ block('choice_widget') }}
-	</div>
+	{%- endif -%}
 {%- endblock timezone_widget %}
 
 {% block currency_widget -%}
-	<div class="input-group">
-		<span class="input-group-addon fa fa-money"></span>
+	{%- if not expanded -%}
+		<div class="input-group">
+			<span class="input-group-addon fa fa-money"></span>
+			{{ block('choice_widget') }}
+		</div>
+	{%- else -%}
 		{{ block('choice_widget') }}
-	</div>
+	{%- endif -%}
 {%- endblock currency_widget %}

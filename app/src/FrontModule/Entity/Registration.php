@@ -2,6 +2,7 @@
 
 namespace App\FrontModule\Entity;
 
+use Symfony\Component\Validator\Constraints\All;
 use Symfony\Component\Validator\Constraints\Country;
 use Symfony\Component\Validator\Constraints\Currency;
 use Symfony\Component\Validator\Constraints\Date;
@@ -31,25 +32,40 @@ class Registration
 	public $email;
 
 	/**
+	 * @NotBlank()
+	 * @var string
+	 */
+	public $gender;
+
+	/**
+	 * @var bool
+	 */
+	public $adult;
+
+	/**
 	 * @Country()
 	 * @var string
 	 */
 	public $country;
 
 	/**
-	 * @Language()
+	 * @All({
+	 *   @Language()
+	 * })
 	 * @var string
 	 */
 	public $language;
 
 	/**
-	 * @Locale()
-	 * @var string
+	 * @All({
+	 *   @Locale()
+	 * })
+	 * @var array
 	 */
 	public $locale;
 
 	/**
-	 * @var string
+	 * @var array
 	 */
 	public $timezone;
 

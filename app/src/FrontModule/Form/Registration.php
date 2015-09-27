@@ -14,11 +14,23 @@ class Registration extends AbstractType
 		$builder->add('name');
 		$builder->add('email');
 
-		$builder->add('country');
-		$builder->add('language', null, [
-			'required' => true,
+		$builder->add('gender', 'choice', [
+			'expanded' => true,
+			'choices' => [
+				'm' => 'Male',
+				'f' => 'Female',
+			],
 		]);
-		$builder->add('locale');
+		$builder->add('adult', 'checkbox');
+
+		$builder->add('country');
+		$builder->add('language', 'language', [
+			'required' => true,
+			'multiple' => true,
+		]);
+		$builder->add('locale', 'locale', [
+			'multiple' => true,
+		]);
 		$builder->add('timezone', 'timezone');
 		$builder->add('currency', 'currency');
 
