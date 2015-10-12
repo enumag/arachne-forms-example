@@ -18,6 +18,13 @@ $(function () {
 
 	$('.form-horizontal').each(function () {
 		$(this).filter('.form-ajax-validation').ajaxValidation();
+		$(this).find('.form-collection').collection({
+			up: '<a href="#" class="input-group-addon fa fa-arrow-up"></a>',
+			down: '<a href="#" class="input-group-addon fa fa-arrow-down"></a>',
+			add: '<a href="#" class="input-group-addon fa fa-plus"></a>',
+			delete: '<a href="#" class="input-group-addon fa fa-trash-o"></a>',
+			hide_disabled_buttons: false,
+		});
 
 		$(this).find('input[type="datetime"]').each(function () {
 			replaceDateTime($(this), 'D. M. YYYY H:mm', 'YYYY-MM-DD HH:mm');

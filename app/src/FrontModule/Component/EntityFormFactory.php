@@ -8,6 +8,6 @@ interface EntityFormFactory
 	/**
 	 * @return EntityForm
 	 */
-	public function create($type, array $options = [], $data = null);
+	public function create($type, array $options = [], $entity = null);
 
 }

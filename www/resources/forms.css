@@ -77,6 +77,26 @@ label.required:after {
 	display: table-cell;
 }
 
+.form-collection > * {
+	margin-bottom: 10px;
+}
+.form-collection > *:last-of-type {
+	margin-bottom: 0;
+}
+.form-collection .collection-action {
+	border-left: 0;
+	text-decoration: none;
+}
+.form-collection .collection-action.collection-action-disabled {
+	color: #bcbcbc;
+}
+.form-collection > .collection-rescue-add {
+	border-left: 1px solid #ccc;
+	border-radius: 4px;
+	height: 34px;
+	width: 36px;
+}
+
 @media (min-width: 1200px) {
 	.form-group .input-group,
 	.form-group .form-control,
@@ -97,5 +117,11 @@ label.required:after {
 		width: 33.33%;
 		float: left;
 		padding: 7px 0 0 10px;
+	}
+}
+
+@media (max-width: 767px) {
+	.form-collection .collection-action {
+		padding: 6px 8px;
 	}
 }

@@ -48,7 +48,7 @@ col-sm-9 col-lg-10
 {%- endblock form_errors_content %}
 
 {% block url_widget -%}
-	<div class="input-group">
+	<div class="input-group collection-actions">
 		<span class="input-group-addon fa fa-internet-explorer"></span>
 		{{- parent() -}}
 	</div>
@@ -56,7 +56,7 @@ col-sm-9 col-lg-10
 
 {% block date_widget -%}
 	{%- if widget == 'single_text' -%}
-		<div class="input-group">
+		<div class="input-group collection-actions">
 			<span class="input-group-addon fa fa-calendar"></span>
 			{{- parent() -}}
 		</div>
@@ -67,7 +67,7 @@ col-sm-9 col-lg-10
 
 {% block datetime_widget -%}
 	{%- if widget == 'single_text' -%}
-		<div class="input-group">
+		<div class="input-group collection-actions">
 			<span class="input-group-addon fa fa-calendar"></span>
 			{{- parent() -}}
 		</div>
@@ -78,7 +78,7 @@ col-sm-9 col-lg-10
 
 {% block time_widget -%}
 	{%- if widget == 'single_text' -%}
-		<div class="input-group">
+		<div class="input-group collection-actions">
 			<span class="input-group-addon fa fa-clock-o"></span>
 			{{- block('form_widget_simple') -}}
 		</div>
@@ -95,7 +95,7 @@ col-sm-9 col-lg-10
 {%- endblock time_widget %}
 
 {% block email_widget -%}
-	<div class="input-group">
+	<div class="input-group collection-actions">
 		<span class="input-group-addon fa fa-at"></span>
 		{{- parent() -}}
 	</div>
@@ -103,7 +103,7 @@ col-sm-9 col-lg-10
 
 {% block country_widget -%}
 	{%- if not expanded -%}
-		<div class="input-group">
+		<div class="input-group collection-actions">
 			<span class="input-group-addon fa fa-globe"></span>
 			{{ block('choice_widget') }}
 		</div>
@@ -114,7 +114,7 @@ col-sm-9 col-lg-10
 
 {% block language_widget -%}
 	{%- if not expanded -%}
-		<div class="input-group">
+		<div class="input-group collection-actions">
 			<span class="input-group-addon fa fa-language"></span>
 			{{ block('choice_widget') }}
 		</div>
@@ -125,7 +125,7 @@ col-sm-9 col-lg-10
 
 {% block locale_widget -%}
 	{%- if not expanded -%}
-		<div class="input-group">
+		<div class="input-group collection-actions">
 			<span class="input-group-addon fa fa-map-marker"></span>
 			{{ block('choice_widget') }}
 		</div>
@@ -136,7 +136,7 @@ col-sm-9 col-lg-10
 
 {% block timezone_widget -%}
 	{%- if not expanded -%}
-		<div class="input-group">
+		<div class="input-group collection-actions">
 			<span class="input-group-addon fa fa-clock-o"></span>
 			{{ block('choice_widget') }}
 		</div>
@@ -147,7 +147,7 @@ col-sm-9 col-lg-10
 
 {% block currency_widget -%}
 	{%- if not expanded -%}
-		<div class="input-group">
+		<div class="input-group collection-actions">
 			<span class="input-group-addon fa fa-money"></span>
 			{{ block('choice_widget') }}
 		</div>
@@ -155,3 +155,39 @@ col-sm-9 col-lg-10
 		{{ block('choice_widget') }}
 	{%- endif -%}
 {%- endblock currency_widget %}
+
+{% block money_widget -%}
+    <div class="input-group collection-actions">
+        {% set prepend = '{{' == money_pattern[0:2] %}
+        {% if not prepend %}
+            <span class="input-group-addon">{{ money_pattern|replace({ '{{ widget }}':''}) }}</span>
+        {% endif %}
+        {{- block('form_widget_simple') -}}
+        {% if prepend %}
+            <span class="input-group-addon">{{ money_pattern|replace({ '{{ widget }}':''}) }}</span>
+        {% endif %}
+    </div>
+{%- endblock money_widget %}
+
+{% block percent_widget -%}
+    <div class="input-group collection-actions">
+        {{- block('form_widget_simple') -}}
+        <span class="input-group-addon">%</span>
+    </div>
+{%- endblock percent_widget %}
+
+{% block collection_widget -%}
+	{% set attr = attr|merge({class: (attr.class|default('') ~ 'form-collection')|trim}) %}
+	{% if prototype is defined %}
+		{% set attr = attr|merge({'data-prototype': form_widget(prototype)}) %}
+		{% set attr = attr|merge({'data-prototype-name': prototype.vars.name}) %}
+	{% endif %}
+	{% set attr = attr|merge({'data-allow-add': allow_add ? 1 : 0}) %}
+	{% set attr = attr|merge({'data-allow-delete': allow_delete ? 1 : 0 }) %}
+	{% set attr = attr|merge({'data-name-prefix': full_name}) %}
+    <div {{ block('widget_container_attributes') }}>
+		{% for child in form %}
+			{{- form_widget(child) -}}
+		{% endfor %}
+    </div>
+{%- endblock collection_widget %}

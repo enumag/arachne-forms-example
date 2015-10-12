@@ -25,11 +25,12 @@ class Registration
 	public $name;
 
 	/**
-	 * @NotBlank()
-	 * @Email()
-	 * @var string
+	 * @All({
+	 *   @Email()
+	 * })
+	 * @var string[]
 	 */
-	public $email;
+	public $emails;
 
 	/**
 	 * @NotBlank()

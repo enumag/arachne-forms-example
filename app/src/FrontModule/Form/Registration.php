@@ -12,7 +12,12 @@ class Registration extends AbstractType
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder->add('name');
-		$builder->add('email');
+		$builder->add('emails', 'collection', [
+			'allow_add' => true,
+			'allow_delete' => true,
+			'delete_empty' => true,
+			'type' => 'email',
+		]);
 
 		$builder->add('gender', 'choice', [
 			'expanded' => true,
