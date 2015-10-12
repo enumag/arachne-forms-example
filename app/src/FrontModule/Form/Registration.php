@@ -9,8 +9,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class Registration extends AbstractType
 {
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+	public function buildForm(FormBuilderInterface $builder, array $options)
+	{
 		$builder->add('name');
 		$builder->add('email');
 
@@ -51,12 +51,17 @@ class Registration extends AbstractType
 		$builder->add('website');
 
 		$builder->add('notes', 'textarea');
-    }
+	}
 
-    public function getName()
-    {
-        return 'app_registration';
-    }
+	public function getName()
+	{
+		return get_class($this);
+	}
+
+	public function getBlockPrefix()
+	{
+		return 'app_registration';
+	}
 
 	public function configureOptions(OptionsResolver $resolver)
 	{

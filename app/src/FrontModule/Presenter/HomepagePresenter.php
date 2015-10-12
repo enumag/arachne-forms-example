@@ -9,7 +9,7 @@ class HomepagePresenter extends BasePresenter
 
 	public function createComponentForm(EntityFormFactory $factory)
 	{
-		return $factory->create('app_registration', [], null);
+		return $factory->create('App\FrontModule\Form\Registration', [], null);
 	}
 
 }

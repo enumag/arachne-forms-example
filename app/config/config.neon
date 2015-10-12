@@ -30,7 +30,7 @@ services:
 	-
 		class: App\FrontModule\Form\Registration
 		tags:
-			arachne.forms.type: app_registration
+			arachne.forms.type: App\FrontModule\Form\Registration
 
 php:
 	date.timezone: Europe/Prague
