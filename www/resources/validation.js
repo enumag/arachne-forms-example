@@ -1,8 +1,8 @@
 (function ($) {
 
-	var xhr;
-
 	var initialize = function (form) {
+		var xhr;
+
 		form.attr('novalidate', true);
 
 		form.on('blur change', 'input, select, textarea', function (event) {
@@ -45,6 +45,11 @@
 							group.addClass('has-success');
 						}
 					});
+				},
+				error: function () {
+					var groups = form.find('.form-group');
+					groups.removeClass('has-success').removeClass('has-error').removeClass('has-warning');
+					form.find('.error-container').empty();
 				},
 			});
 		});
