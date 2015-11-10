@@ -7,13 +7,12 @@
 			<input type="submit" value="Uložit" class="btn btn-primary">
 		</div>
 	</div>
-	<input type="hidden" name="do" value="{{ component }}-submit">
     {{- parent() -}}
 {%- endblock form_end -%}
 
 {# Add form-horizontal class to form tag, enable ajax validation. #}
 {% block form_start -%}
-	{% set attr = attr|merge({class: (attr.class|default('') ~ 'form-ajax-validation')|trim, 'data-validate': component ~ '-validate'}) %}
+	{% set attr = attr|merge({class: (attr.class|default('') ~ 'form-ajax-validation')|trim}) %}
 	{{- parent() -}}
 {%- endblock %}
 

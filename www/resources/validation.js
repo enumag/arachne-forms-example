@@ -19,7 +19,7 @@
 				obj[item.name] = item.value;
 				return obj;
 			}, {});
-			values['do'] = form.data('validate');
+			values['do'] = values['do'].substring(0, values['do'].length - 6) + 'validate';
 
 			xhr = $.ajax({
 				data: values,
