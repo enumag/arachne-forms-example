@@ -34,7 +34,7 @@
 		"symfony/twig-bridge": "~2.8.0@dev",
 		"symfony/security-csrf": "~2.8.0@dev",
 		"tracy/tracy": "~2.3.0",
-		"twig/twig": "~1.22.0"
+		"twig/twig": "~1.23"
 	},
 	"autoload": {
 		"psr-4": {
