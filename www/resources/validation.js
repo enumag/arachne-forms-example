@@ -13,7 +13,7 @@
 			var group = $(event.target).closest('.form-group');
 			group.data('validation-visited', true);
 			group.removeClass('has-error').removeClass('has-success').addClass('has-warning');
-			group.find('.error-container').html('<span class="error-message">Probíhá validace&hellip;</span>');
+			group.find('.error-container').html('<span class="error-message"></span>');
 
 			if (request && request.readyState !== 4) {
 				request.abort();
