@@ -17,6 +17,9 @@ class Registration extends AbstractType
 			'allow_delete' => true,
 			'delete_empty' => true,
 			'type' => 'email',
+			'options' => [
+				'label' => 'Email',
+			],
 		]);
 
 		$builder->add('gender', 'choice', [
@@ -56,16 +59,6 @@ class Registration extends AbstractType
 		$builder->add('website');
 
 		$builder->add('notes', 'textarea');
-	}
-
-	public function getName()
-	{
-		return get_class($this);
-	}
-
-	public function getBlockPrefix()
-	{
-		return 'app_registration';
 	}
 
 	public function configureOptions(OptionsResolver $resolver)

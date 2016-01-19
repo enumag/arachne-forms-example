@@ -19,11 +19,13 @@ $(function () {
 	$('.form-horizontal').each(function () {
 		$(this).filter('.form-ajax-validation').ajaxValidation();
 		$(this).find('.form-collection').collection({
-			up: '<a href="#" class="input-group-addon fa fa-arrow-up"></a>',
-			down: '<a href="#" class="input-group-addon fa fa-arrow-down"></a>',
-			add: '<a href="#" class="input-group-addon fa fa-plus"></a>',
-			delete: '<a href="#" class="input-group-addon fa fa-trash-o"></a>',
-			hide_disabled_buttons: false,
+			add: '<a href="#" class="btn btn-default fa fa-plus"></a>',
+			delete: '<a href="#" class="btn btn-default fa fa-trash-o"></a>',
+			elements_selector: '> div:not(.row)',
+			hide_useless_buttons: false,
+			allow_up: false,
+			allow_down: false,
+			drag_drop: false,
 		});
 
 		$(this).find('input[type="datetime"]').each(function () {

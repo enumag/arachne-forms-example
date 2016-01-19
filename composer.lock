@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "44f285641e0171db89dd3841e24a72f3",
-    "content-hash": "a5b6d310e4cb405dbe5b8f7ec73577bf",
+    "hash": "faf3c030d9722cabf62e6ea9302e79da",
+    "content-hash": "868a76ac6d822715d2d2669588f0b688",
     "packages": [
         {
             "name": "arachne/bootstrap",
@@ -50,8 +50,14 @@
             "version": "v0.4.1",
             "source": {
                 "type": "git",
-                "url": "git@gitlab.m33.cz:arachne/di-helpers.git",
+                "url": "https://github.com/Arachne/DI-Helpers.git",
                 "reference": "b8683325ea451a9c4e82633a28ef18070afd0a7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Arachne/DI-Helpers/zipball/b8683325ea451a9c4e82633a28ef18070afd0a7c",
+                "reference": "b8683325ea451a9c4e82633a28ef18070afd0a7c",
+                "shasum": ""
             },
             "require": {
                 "nette/di": "~2.2",
@@ -74,20 +80,15 @@
                     "Arachne\\DIHelpers\\": "src"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Tests\\Unit\\": "tests/unit/src",
-                    "Tests\\Integration\\": "tests/integration/src"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
                     "name": "Jáchym Toušek",
-                    "homepage": "http://enumag.cz",
-                    "email": "enumag@gmail.com"
+                    "email": "enumag@gmail.com",
+                    "homepage": "http://enumag.cz"
                 }
             ],
             "keywords": [
@@ -102,8 +103,14 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@gitlab.m33.cz:arachne/forms.git",
+                "url": "https://github.com/Arachne/Forms.git",
                 "reference": "6330a85ff9bf8997c2e937294cb34320adb2abf7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Arachne/Forms/zipball/6330a85ff9bf8997c2e937294cb34320adb2abf7",
+                "reference": "6330a85ff9bf8997c2e937294cb34320adb2abf7",
+                "shasum": ""
             },
             "require": {
                 "arachne/di-helpers": "~0.4.0",
@@ -135,26 +142,21 @@
                     "Arachne\\": "src"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Tests\\Integration\\": "tests/integration/src",
-                    "Tests\\Functional\\": "tests/functional/src"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
                     "name": "Jáchym Toušek",
-                    "homepage": "http://enumag.cz",
-                    "email": "enumag@gmail.com"
+                    "email": "enumag@gmail.com",
+                    "homepage": "http://enumag.cz"
                 }
             ],
             "description": "Integration of symfony/form to Nette framework.",
             "keywords": [
+                "Forms",
                 "arachne",
-                "forms",
                 "nette",
                 "symfony"
             ],

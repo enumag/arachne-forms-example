@@ -1,16 +1,16 @@
 {% use 'bootstrap_3_horizontal_layout.html.twig' %}
 
-{# Add hidden field with component signal and submit button. #}
+{# Add submit button. #}
 {%- block form_end -%}
 	<div class="form-group">
 		<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
-			<input type="submit" value="Uložit" class="btn btn-primary">
+			<input type="submit" value="Save" class="btn btn-primary">
 		</div>
 	</div>
     {{- parent() -}}
 {%- endblock form_end -%}
 
-{# Add form-horizontal class to form tag, enable ajax validation. #}
+{# Enable ajax validation. #}
 {% block form_start -%}
 	{% set attr = attr|merge({class: (attr.class|default('') ~ 'form-ajax-validation')|trim}) %}
 	{{- parent() -}}
@@ -46,139 +46,43 @@ col-sm-9 col-lg-10
 	{%- endif -%}
 {%- endblock form_errors_content %}
 
-{% block url_widget -%}
-	<div class="input-group collection-actions">
-		<span class="input-group-addon fa fa-internet-explorer"></span>
-		{{- parent() -}}
-	</div>
-{%- endblock url_widget %}
+{# Fieldsets for subforms. #}
+{%- block _subform_row -%}
+	<fieldset>
+		{{- block('_subform_label') -}}
+		{{- form_errors(form) -}}
+		{{- form_widget(form) -}}
+	</fieldset>
+{%- endblock _subform_row -%}
 
-{% block date_widget -%}
-	{%- if widget == 'single_text' -%}
-		<div class="input-group collection-actions">
-			<span class="input-group-addon fa fa-calendar"></span>
-			{{- parent() -}}
-		</div>
-	{%- else -%}
-		{{- parent() -}}
-	{%- endif -%}
-{%- endblock date_widget %}
-
-{% block datetime_widget -%}
-	{%- if widget == 'single_text' -%}
-		<div class="input-group collection-actions">
-			<span class="input-group-addon fa fa-calendar"></span>
-			{{- parent() -}}
-		</div>
-	{%- else -%}
-		{{- parent() -}}
-	{%- endif -%}
-{%- endblock datetime_widget %}
-
-{% block time_widget -%}
-	{%- if widget == 'single_text' -%}
-		<div class="input-group collection-actions">
-			<span class="input-group-addon fa fa-clock-o"></span>
-			{{- block('form_widget_simple') -}}
-		</div>
-	{%- else -%}
-        {% set attr = attr|merge({class: (attr.class|default('') ~ ' form-inline')|trim}) -%}
-        {% if datetime is not defined or false == datetime -%}
-            <div {{ block('widget_container_attributes') -}}>
+{# Subform headline. #}
+{%- block _subform_label -%}
+    {% if label is not same as(false) -%}
+        {% if label is empty -%}
+            {%- if label_format is not empty -%}
+                {% set label = label_format|replace({
+                    '%name%': name,
+                    '%id%': id,
+                }) %}
+            {%- else -%}
+                {% set label = name|humanize %}
+            {%- endif -%}
         {%- endif -%}
-        {{- form_widget(form.hour) }} : {{ form_widget(form.minute) }}{% if with_seconds %} : {{ form_widget(form.second) }}{% endif %}
-        {% if datetime is not defined or false == datetime -%}
-            </div>
-        {%- endif -%}
-	{%- endif -%}
-{%- endblock time_widget %}
+        <legend>{{ translation_domain is same as(false) ? label : label|trans({}, translation_domain) }}</legend>
+    {%- endif -%}
+{%- endblock _subform_label -%}
 
-{% block email_widget -%}
-	<div class="input-group collection-actions">
-		<span class="input-group-addon fa fa-at"></span>
-		{{- parent() -}}
-	</div>
-{%- endblock email_widget %}
-
-{% block country_widget -%}
-	{%- if not expanded -%}
-		<div class="input-group collection-actions">
-			<span class="input-group-addon fa fa-globe"></span>
-			{{ block('choice_widget') }}
-		</div>
-	{%- else -%}
-		{{ block('choice_widget') }}
-	{%- endif -%}
-{%- endblock country_widget %}
-
-{% block language_widget -%}
-	{%- if not expanded -%}
-		<div class="input-group collection-actions">
-			<span class="input-group-addon fa fa-language"></span>
-			{{ block('choice_widget') }}
-		</div>
-	{%- else -%}
-		{{ block('choice_widget') }}
-	{%- endif -%}
-{%- endblock language_widget %}
-
-{% block locale_widget -%}
-	{%- if not expanded -%}
-		<div class="input-group collection-actions">
-			<span class="input-group-addon fa fa-map-marker"></span>
-			{{ block('choice_widget') }}
-		</div>
-	{%- else -%}
-		{{ block('choice_widget') }}
-	{%- endif -%}
-{%- endblock locale_widget %}
-
-{% block timezone_widget -%}
-	{%- if not expanded -%}
-		<div class="input-group collection-actions">
-			<span class="input-group-addon fa fa-clock-o"></span>
-			{{ block('choice_widget') }}
-		</div>
-	{%- else -%}
-		{{ block('choice_widget') }}
-	{%- endif -%}
-{%- endblock timezone_widget %}
-
-{% block currency_widget -%}
-	{%- if not expanded -%}
-		<div class="input-group collection-actions">
-			<span class="input-group-addon fa fa-money"></span>
-			{{ block('choice_widget') }}
-		</div>
-	{%- else -%}
-		{{ block('choice_widget') }}
-	{%- endif -%}
-{%- endblock currency_widget %}
-
-{% block money_widget -%}
-    <div class="input-group collection-actions">
-        {% set prepend = '{{' == money_pattern[0:2] %}
-        {% if not prepend %}
-            <span class="input-group-addon">{{ money_pattern|replace({ '{{ widget }}':''}) }}</span>
-        {% endif %}
-        {{- block('form_widget_simple') -}}
-        {% if prepend %}
-            <span class="input-group-addon">{{ money_pattern|replace({ '{{ widget }}':''}) }}</span>
-        {% endif %}
-    </div>
-{%- endblock money_widget %}
-
-{% block percent_widget -%}
-    <div class="input-group collection-actions">
-        {{- block('form_widget_simple') -}}
-        <span class="input-group-addon">%</span>
-    </div>
-{%- endblock percent_widget %}
-
+{# Collection rendering. #}
 {% block collection_widget -%}
 	{% set attr = attr|merge({class: (attr.class|default('') ~ 'form-collection')|trim}) %}
 	{% if prototype is defined %}
-		{% set attr = attr|merge({'data-prototype': form_widget(prototype)}) %}
+		{% set attr = attr|merge({'data-prototype':
+			'<div>'
+			~ (prototype.vars.compound ? form_widget(prototype) ~ form_errors(prototype) : form_row(prototype))
+			~ '<div class="row">'
+			~ '<div class="collection-actions col-sm-9 col-lg-10 col-sm-offset-3 col-lg-offset-2"></div>'
+			~ '</div>'
+			~ '</div>'}) %}
 		{% set attr = attr|merge({'data-prototype-name': prototype.vars.name}) %}
 	{% endif %}
 	{% set attr = attr|merge({'data-allow-add': allow_add ? 1 : 0}) %}
@@ -186,7 +90,28 @@ col-sm-9 col-lg-10
 	{% set attr = attr|merge({'data-name-prefix': full_name}) %}
     <div {{ block('widget_container_attributes') }}>
 		{% for child in form %}
-			{{- form_widget(child) -}}
+			<div>
+				{%- if child.vars.compound -%}
+					{{- form_widget(child) -}}
+					{{- form_errors(child) -}}
+				{%- else -%}
+					{{- form_row(child) -}}
+				{%- endif -%}
+				<div class="row">
+					<div class="collection-actions col-sm-9 col-lg-10 col-sm-offset-3 col-lg-offset-2">
+					</div>
+				</div>
+			</div>
 		{% endfor %}
+		<span class="collection-tmp"></span>
+		<div class="row">
+			<div class="col-sm-9 col-lg-10 col-sm-offset-3 col-lg-offset-2">
+				<a href="#" class="btn btn-default fa fa-plus collection-action collection-rescue-add" data-collection="{{ id }}"></a>
+			</div>
+		</div>
     </div>
 {%- endblock collection_widget %}
+
+{%- block collection_row -%}
+	{{- block('_subform_row') -}}
+{%- endblock collection_row -%}

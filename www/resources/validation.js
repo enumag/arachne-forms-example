@@ -77,10 +77,10 @@
 		form.on('blur change', 'input, select, textarea', handler);
 	};
 
-    $.fn.ajaxValidation = function () {
-        return this.each(function () {
+	$.fn.ajaxValidation = function () {
+		return this.each(function () {
 			initialize($(this));
 		});
-    };
+	};
 
 }(jQuery));

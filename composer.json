@@ -40,11 +40,5 @@
 		"psr-4": {
 			"App\\": "app/src"
 		}
-	},
-	"repositories": [
-		{
-			"type": "composer",
-			"url": "http://packages.m33.cz"
-		}
-	]
+	}
 }
